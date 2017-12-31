@@ -1,2 +1,2 @@
 # CodeBytes
-Solved problems Python/C/C++/C#
+Solved problems in Python/C/C++/C#
