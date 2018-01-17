@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 
-
 struct StudentEntry {
 	// constructors
 	StudentEntry() = default;
@@ -65,7 +64,6 @@ std::istream& read(std::istream &is, StudentEntry &st) {
 StudentEntry::StudentEntry(std::istream &is) {
 	read(is, *this);
 }
-
 
 int main() {
 	// object demos
