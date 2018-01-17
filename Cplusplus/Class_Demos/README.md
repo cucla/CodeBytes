@@ -1,1 +1,1 @@
-StudentEntry.cpp  ->  class using struct & iostream
+StudentEntry.cpp    ->    class using struct & iostream
