@@ -66,8 +66,7 @@ int main() {
 				 st03("Diplo", 3, {87, 94, 88});
 	// G-Easy 2 90 80, Joe_Jonas 1 90, Joe_Jonas 2 88 94, Diplo 2 92 88
 
-	// combine same student data from input, if followed one-by-one
-	StudentEntry student;
+	StudentEntry student; 							// combine same student data
 	if (read(std::cin, student)) {
 		StudentEntry nextStudent;
 		while (read(std::cin, nextStudent)) {
