@@ -49,6 +49,7 @@ std::ostream& print(std::ostream &os, const StudentEntry &st) {			// print funct
 std::istream& read(std::istream &is, StudentEntry &st) {			// read function
 	std::cout << "Enter next student data: " << std::endl;
 	is >> st.name >> st.passCources;
+	st.markSum = 0.0f;
 	double mark;
 	for (unsigned i = 0; i < st.passCources; ++i) {
 		is >> mark;
