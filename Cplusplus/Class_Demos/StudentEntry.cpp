@@ -62,8 +62,8 @@ StudentEntry::StudentEntry(std::istream &is) {					// constructor (2/2)
 int main() {
 	// object demos
 	StudentEntry st01,
-				 st02("Joe_Jonas"),
-				 st03("Diplo", 3, {87, 94, 88});
+		     st02("Joe_Jonas"),
+		     st03("Diplo", 3, {87, 94, 88});
 	// G-Easy 2 90 80, Joe_Jonas 1 90, Joe_Jonas 2 88 94, Diplo 2 92 88
 
 	StudentEntry student; 							// combine same student data
