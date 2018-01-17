@@ -28,10 +28,7 @@ StudentEntry& StudentEntry::combine(const StudentEntry& st) {			// combine funct
 }
 
 double StudentEntry::avgMark() const {						// avgMark function
-	if (passCources)
-		return markSum/passCources;
-	else
-		return 0;
+	return passCources ? markSum / passCources : 0;
 }
 
 StudentEntry add(const StudentEntry &st1, const StudentEntry &st2) {		// nonmember interface functions // add function
