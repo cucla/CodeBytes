@@ -2,8 +2,7 @@
 #include <string>
 
 struct StudentEntry {
-	// constructors
-	StudentEntry() = default;
+	StudentEntry() = default;						// constructors (1/2)
 	StudentEntry(const std::string &s): name(s) { }
 	StudentEntry(const std::string &s, unsigned n, std::initializer_list<double> li):
 		name(s), passCources(n) {
@@ -13,44 +12,41 @@ struct StudentEntry {
 	}
 	StudentEntry(std::istream &);
 
-	// member functions
-	std::string getStudentName() const { return name; }
+	std::string getStudentName() const { return name; }			// member functions
 	StudentEntry& combine (const StudentEntry&);
 	double avgMark() const;
 
-	// data members
-	std::string name = "";
+	std::string name = "";							// data members
 	unsigned passCources = 0;
 	double markSum = 0.0;
 };
 
-StudentEntry& StudentEntry::combine(const StudentEntry& st) {
+StudentEntry& StudentEntry::combine(const StudentEntry& st) {			// combine function
 	passCources += st.passCources;
 	markSum += st.markSum;
 	return *this;
 }
 
-double StudentEntry::avgMark() const {
+double StudentEntry::avgMark() const {						// avgMark function
 	if (passCources)
 		return markSum/passCources;
 	else
 		return 0;
 }
 
-// nonmember interface functions
-StudentEntry add(const StudentEntry &st1, const StudentEntry &st2) {
+StudentEntry add(const StudentEntry &st1, const StudentEntry &st2) {		// nonmember interface functions // add function
 	StudentEntry sum = st1;
 	sum.combine(st2);
 	return sum;
 }
 
-std::ostream& print(std::ostream &os, const StudentEntry &st) {
+std::ostream& print(std::ostream &os, const StudentEntry &st) {			// print function
 	os << st.getStudentName() << " " << st.passCources << " " << st.markSum
 			<< "\t | Average: " << st.avgMark() <<"\n";
 	return os;
 }
 
-std::istream& read(std::istream &is, StudentEntry &st) {
+std::istream& read(std::istream &is, StudentEntry &st) {			// read function
 	std::cout << "Enter next student data: " << std::endl;
 	is >> st.name >> st.passCources;
 	double mark;
@@ -61,7 +57,7 @@ std::istream& read(std::istream &is, StudentEntry &st) {
 	return is;
 }
 
-StudentEntry::StudentEntry(std::istream &is) {
+StudentEntry::StudentEntry(std::istream &is) {					// constructor (2/2)
 	read(is, *this);
 }
 
