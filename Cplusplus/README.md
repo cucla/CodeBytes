@@ -1,1 +1,2 @@
-C++ code snippets, solved problems & class examples
+# C++ 
+Class_Demos   ->   C++ class design examples
