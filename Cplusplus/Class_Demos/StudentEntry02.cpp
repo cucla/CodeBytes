@@ -33,10 +33,10 @@ public:
 
 	// data members
 private:
-	std::string				name;						
-	unsigned				passCources = 0;
+	std::string		name;						
+	unsigned		passCources = 0;
 	std::vector<unsigned>	marks;
-	double					markSum = 0;
+	double			markSum = 0;
 };
 
 // member function definitions (2/2)
