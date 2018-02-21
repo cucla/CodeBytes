@@ -9,7 +9,7 @@
 
 class StudentEntry {
 public:
-	StudentEntry() = default;													// constructors
+	StudentEntry() = default;									// constructors
 	StudentEntry(const std::string &s, unsigned n, std::initializer_list<unsigned> li) :
 		name(s), passCources(n) {
 		for (auto el : li) {
@@ -24,10 +24,10 @@ public:
 	std::vector<unsigned> & getMarks();
 	double & getMarkSum() { return markSum; };  // read-write reference
 	double avgMark() const;
-	void setName(std::string s) { this->name = s; };							// mutator methods
+	void setName(std::string s) { this->name = s; };						// mutator methods
 	void setPassCources(unsigned n);
 
-private:																		// data members
+private:												// data members
 	std::string				name;
 	unsigned				passCources = 0;
 	std::vector<unsigned>	marks;
@@ -83,13 +83,13 @@ std::istream & read(std::istream &is, StudentEntry &st) {
 
 int main()
 {
-	const int MAX_STUDENT = 50;														// declarations
+	const int MAX_STUDENT = 50;									// declarations
 	int entryCount = -1;		//-1 means the list is empty	
 	const char FILE_PATH[] = "C:\\Users\\011256\\Desktop\\C++\\student_list.txt";
 	std::fstream entryFile;
 
 
-	StudentEntry *entryList[MAX_STUDENT] = {};										// arr of pointers to class objects?
+	StudentEntry *entryList[MAX_STUDENT] = {};							// arr of pointers to class objects?
 	
 	entryList[0] = new StudentEntry();
 	read(std::cin, *entryList[0]);
