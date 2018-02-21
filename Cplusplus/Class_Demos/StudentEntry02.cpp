@@ -116,7 +116,7 @@ int main() {
 	case 3: break; // add mark -> to existing name
 	case 4: break; // delete entry
 	case 5: break; // search by name
-	case 6: break; // search by mark
+	case 6: break; // search by average mark
 	case 7: break;
 	}
 
