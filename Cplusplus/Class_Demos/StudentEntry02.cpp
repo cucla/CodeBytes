@@ -5,11 +5,16 @@
 #include <vector>
 #include <cassert>
 
-// get & set methods --> http://www.walletfox.com/course/getset.php
 
-class StudentEntry {
+const int MAX_STUDENT = 50;														// declarations
+int entryCount = -1;		//-1 for empty student list
+const char FILE_PATH[] = "C:\\Users\\011256\\Desktop\\filesC++\\student_list.txt";
+std::fstream entryFile;
+
+
+class StudentEntry {															// class
 public:
-	StudentEntry() = default;									// constructors
+	StudentEntry() = default;													// constructors
 	StudentEntry(const std::string &s, unsigned n, std::initializer_list<unsigned> li) :
 		name(s), passCources(n) {
 		for (auto el : li) {
@@ -24,15 +29,16 @@ public:
 	std::vector<unsigned> & getMarks();
 	double & getMarkSum() { return markSum; };  // read-write reference
 	double avgMark() const;
-	void setName(std::string s) { this->name = s; };						// mutator methods
+	void setName(std::string s) { this->name = s; };							// mutator methods
 	void setPassCources(unsigned n);
 
-private:												// data members
+private:																		// data members
 	std::string				name;
 	unsigned				passCources = 0;
 	std::vector<unsigned>	marks;
 	double					markSum = 0;
-};
+} *entryList[MAX_STUDENT];   // arr of pointers to class objects
+
 
 const std::vector<unsigned> & StudentEntry::getMarks() const {
 	return marks;
@@ -80,20 +86,44 @@ std::istream & read(std::istream &is, StudentEntry &st) {
 	return is;
 }
 
+int getUserChoice() {
+	int choice;
+	std::cout << "Choose option: " << std::endl;
+	std::cin >> choice;
+	return choice;
+}
+
+void loadDataFromFile() {
+	entryFile.open(FILE_PATH, std::fstream::in);
+	if (entryFile.is_open()) {
+		std::cout << "File opened\n" << std::endl;
+		
+		char temp[100];
+		for (int i = 0; entryFile >> temp; ++i) {
+			std::cout << temp << std::endl;
+		}
+		++entryCount;
+		std::cout << entryCount << std::endl;
+		
+		entryFile.close();
+		entryFile.clear();
+	}
+	else {
+		entryFile.clear();
+		std::cout << "File not found in [ " << FILE_PATH << " ]\n" << std::endl;
+	}
+}
+
 
 int main()
 {
-	const int MAX_STUDENT = 50;									// declarations
-	int entryCount = -1;		//-1 means the list is empty	
-	const char FILE_PATH[] = "C:\\Users\\011256\\Desktop\\C++\\student_list.txt";
-	std::fstream entryFile;
-
-
-	StudentEntry *entryList[MAX_STUDENT] = {};							// arr of pointers to class objects?
-	
+	/*
 	entryList[0] = new StudentEntry();
 	read(std::cin, *entryList[0]);
 	print(std::cout, *entryList[0]);
+	entryList[1] = new StudentEntry();
+	read(std::cin, *entryList[1]);
+	print(std::cout, *entryList[1]);
 
 	// saveDataToFile()
 	entryFile.open(FILE_PATH, std::fstream::out);
@@ -111,24 +141,26 @@ int main()
 			}
 		}
 	}
-
-
-
-	/*
-	std::cout << "1. Show List\n2. Add Entry\n3. Add Mark\n4. Delete Entry\n"
-		"5. Search by Name\n6. Search by Mark\n7. Exit\n" << std::endl;
-	std::cout << "Choose option: " << std::endl;
-	int userChoice;
-	std::cin >> userChoice;
-	switch (userChoice) {
-	case 1: break; // show list
-	case 2: break; // add entry -> add new name
-	case 3: break; // add mark -> to existing name
-	case 4: break; // delete entry
-	case 5: break; // search by name
-	case 6: break; // search by average mark
-	case 7: break;
-	}
 	*/
+	
+	loadDataFromFile(); //see current number of records - but first time no data
+	int userChoice;
+	do {
+		std::cout << "1. Show List\n2. Add Entry\n3. Add Mark\n4. Delete Entry\n"
+			"5. Search by Name\n6. Search by Mark\n7. Exit\n" << std::endl;
+		//std::cout << "Current number of records: " << entryCount + 1 << std::endl;
+		userChoice = getUserChoice();
+		switch (userChoice) {
+		case 1: break; // show list
+		case 2: break; // add entry -> add new name
+		case 3: break; // add mark -> to existing name
+		case 4: break; // delete entry
+		case 5: break; // search by name
+		case 6: break; // search by average mark
+		case 7: break;
+		}
+	} while (userChoice != 7); 
+	// SaveDataToFile(); 
+	
 	std::cin.get();
 }
