@@ -56,7 +56,7 @@ std::istream& read(std::istream &is, StudentEntry &st) {			// read function
 }
 
 StudentEntry::StudentEntry(std::istream &is) {					// constructor (2/2)
-	read(is, *this);
+	read(is, *this);     // use this to access object as a whole (because 'read' second parameter is a ref to obj)
 }
 
 int main() {
