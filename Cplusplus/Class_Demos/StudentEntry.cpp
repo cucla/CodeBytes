@@ -24,7 +24,7 @@ struct StudentEntry {
 StudentEntry& StudentEntry::combine(const StudentEntry& st) {			// combine function
 	passCources += st.passCources;
 	markSum += st.markSum;
-	return *this;	// returns object on which the function was called
+	return *this;	// returns object on which the function was called -> this.combine(next)
 }
 
 double StudentEntry::avgMark() const {						// avgMark function
