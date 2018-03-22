@@ -82,4 +82,5 @@ int main() {
 	} else {
 		std::cerr << "No data?!" << std::endl;
 	}
+	std::cin.get();
 }
