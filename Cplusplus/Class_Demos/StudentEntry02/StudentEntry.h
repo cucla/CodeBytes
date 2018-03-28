@@ -32,10 +32,10 @@ public:
 	StudentEntry & operator = (StudentEntry & st);
 
 private:
-	std::string			name;										// data members
+	std::string		name;						// data members
 	std::vector<int>	marks;
-	unsigned			passCources = 0;
-	double				markSum = 0.0;
+	unsigned		passCources = 0;
+	double			markSum = 0.0;
 };	
 
 std::ostream & showRecord(std::ostream &os, size_t i);				// friend functions again
