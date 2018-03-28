@@ -1,14 +1,13 @@
 #include "stdafx.h"
-
 #include "StudentEntry.h"
 
 
 std::fstream	  entryFile;
-const char		  FILE_PATH[] = "C:\\Users\\011256\\Desktop\\filesC++\\studentList.dat";
-const int		    MAX_STUDENT = 50;
-int				      entryCount = -1;			    // -1 means the list is empty
-size_t			    idx = 51;					        // 51 means not pointing to any element, cuz only 50 students
-StudentEntry *	entryList[MAX_STUDENT];		// array of pointers to class objects
+const char	  FILE_PATH[] = "C:\\Users\\011256\\Desktop\\filesC++\\studentList.dat";
+const int	  MAX_STUDENT = 50;
+int		  entryCount = -1;		// -1 means the list is empty
+size_t		  idx = 51;			// 51 means not pointing to any element, cuz only 50 students
+StudentEntry *	  entryList[MAX_STUDENT];	// array of pointers to class objects
 
 
 StudentEntry & StudentEntry::operator = (StudentEntry & st) {
