@@ -38,7 +38,7 @@ namespace Delegate
             someDelegate dd = d1 + d2;
 
             SomeClass obj = new SomeClass();
-            someDelegate d3 = obj.foo;
+            someDelegate d3 = obj.foo;      // bound to class instance
             dd += d3;
             dd(a, b);       // or someDelegate d = bar; ... d = baz; ... d = obj.foo;
 
