@@ -29,13 +29,13 @@ namespace Delegate
         static void Main(string[] args)
         {
             MyDelegate f = func1;
-            Console.WriteLine("The number is: " + f(10, 20));
+            Console.WriteLine("The number is: " + f(10, 20));       // The number is: 30 
             f = func2;
-            Console.WriteLine("The number is: " + f(10, 20));
+            Console.WriteLine("The number is: " + f(10, 20));       // The number is: 200
 
             MyClass mc = new MyClass();
             f = mc.instanceMethod1;
-            Console.WriteLine("The number is: " + f(10, 20));
+            Console.WriteLine("The number is: " + f(10, 20));       // The number is: 300
 
 
             Console.WriteLine("\nPress Enter Key to Continue...");
