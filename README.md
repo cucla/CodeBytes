@@ -1,2 +1,2 @@
 # CodeBytes
-Solved problems in C/C++/C#/Python
+Design patterns for C/C++/C#/Python
