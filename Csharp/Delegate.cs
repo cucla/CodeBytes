@@ -3,47 +3,46 @@ using System;
 namespace Delegate
 {
     // DECLARE THE DELEGATE TYPE
-    public delegate string MyDelegate(int arg1, int arg2);
+    public delegate String someDelegate(double a, double b);
 
-    class MyClass
+    class SomeClass
     {
-        public string instanceMethod1(int arg1, int arg2)
+        public String foo(double a, double b)
         {
-            return ((arg1 + arg2) * arg1).ToString();
+            return Math.Pow(a, b).ToString();
         }
     }
 
     class Program
     {
-        static string func1(int a, int b)
+        static String bar(double a, double b)
         {
             return (a + b).ToString();
         }
-        static string func2(int a, int b)
+        static String baz(double a, double b)
         {
-            return (a * b).ToString();
+            return (a - b).ToString();
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
-            MyDelegate f = func1;
-            Console.WriteLine("The number is: " + f(10, 20));           // The number is: 30 
-            f = func2;
-            Console.WriteLine("The number is: " + f(10, 20));           // The number is: 200
+            someDelegate d = bar;
+            Console.WriteLine("Result: " + d(10, 2.5));           // Result: 12.5
+            d = baz;
+            Console.WriteLine("Result: " + d(10, 2.5));           // Result: 7.5
 
-            f = delegate (int arg1, int arg2)   // ANONYMOUS DELEGATES
+            d = delegate (double a, double b)   // ANONYMOUS DELEGATES
             {
-            return (arg1 - arg2).ToString();
+                return (a * b).ToString();
             };
-            Console.WriteLine("The number is: " + f(10, 20));           // The number is: -10
-            
-            MyClass mc = new MyClass();
-            f = mc.instanceMethod1;             // BOUND TO CLASS INSTANCE
-            Console.WriteLine("The number is: " + f(10, 20));           // The number is: 300
+            Console.WriteLine("Result: " + d(10, 2.5));           // Result: 25
+
+            SomeClass obj = new SomeClass();
+            d = obj.foo;             // BOUND TO CLASS INSTANCE
+            Console.WriteLine("Result: " + d(10, 2.5));           // Result: 316.227766016838
 
 
-            Console.WriteLine("\nPress Enter Key to Continue...");
-            Console.ReadLine();
+            Console.Read();
         }
     }
 }
