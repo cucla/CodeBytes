@@ -1,6 +1,6 @@
 using System;
 
-namespace BasicDelegates
+namespace Delegate
 {
     // declare the delegate type
     public delegate string MyDelegate(int arg1, int arg2);
