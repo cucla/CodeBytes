@@ -9,7 +9,9 @@ namespace Delegate
     {
         public String foo(double a, double b)
         {
-            return Math.Pow(a, b).ToString();
+            String result = (a * b).ToString();
+            Console.WriteLine("Result: " + result);
+            return result;
         }
     }
 
@@ -17,32 +19,44 @@ namespace Delegate
     {
         static String bar(double a, double b)
         {
-            return (a + b).ToString();
+            String result = (a + b).ToString();
+            Console.WriteLine("Result: " + result);
+            return result;
         }
         static String baz(double a, double b)
         {
-            return (a - b).ToString();
+            String result = (a - b).ToString();
+            Console.WriteLine("Result: " + result);
+            return result;
         }
 
         static void Main()
         {
-            someDelegate d = bar;
-            Console.WriteLine("Result: " + d(10, 2.5));           // Result: 12.5
-            d = baz;
-            Console.WriteLine("Result: " + d(10, 2.5));           // Result: 7.5
-
-            d = delegate (double a, double b)   // ANONYMOUS DELEGATE
-            {
-                return (a * b).ToString();
-            };
-            Console.WriteLine("Result: " + d(10, 2.5));           // Result: 25
+            double a = 10, b = 2.5;
+            someDelegate d1 = bar;      // DELEGATE CHAIN
+            someDelegate d2 = baz;
+            someDelegate dd = d1 + d2;
 
             SomeClass obj = new SomeClass();
-            d = obj.foo;             // BOUND TO CLASS INSTANCE
-            Console.WriteLine("Result: " + d(10, 2.5));           // Result: 316.227766016838
+            someDelegate d3 = obj.foo;
+            dd += d3;
+            dd(a, b);       // or someDelegate d = bar; ... d = baz; ... d = obj.foo;
 
+            someDelegate d = delegate (double xa, double xb)   // ANONYMOUS DELEGATES
+            {
+                return (xa * xb).ToString();
+            };
+            Console.WriteLine("Result: " + d(a, b));           // Result: 25
 
+           
             Console.Read();
         }
     }
 }
+
+/*
+ * Result: 12.5
+ * Result: 7.5
+ * Result: 25
+ * Result: 25
+ */
