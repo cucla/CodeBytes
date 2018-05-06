@@ -2,7 +2,7 @@ using System;
 
 namespace Delegate
 {
-    // declare the delegate type
+    // DECLARE THE DELEGATE TYPE
     public delegate string MyDelegate(int arg1, int arg2);
 
     class MyClass
@@ -27,13 +27,19 @@ namespace Delegate
         static void Main(string[] args)
         {
             MyDelegate f = func1;
-            Console.WriteLine("The number is: " + f(10, 20));       // The number is: 30 
+            Console.WriteLine("The number is: " + f(10, 20));           // The number is: 30 
             f = func2;
-            Console.WriteLine("The number is: " + f(10, 20));       // The number is: 200
+            Console.WriteLine("The number is: " + f(10, 20));           // The number is: 200
 
+            f = delegate (int arg1, int arg2)   // ANONYMOUS DELEGATES
+            {
+            return (arg1 - arg2).ToString();
+            };
+            Console.WriteLine("The number is: " + f(10, 20));           // The number is: -10
+            
             MyClass mc = new MyClass();
-            f = mc.instanceMethod1;
-            Console.WriteLine("The number is: " + f(10, 20));       // The number is: 300
+            f = mc.instanceMethod1;             // BOUND TO CLASS INSTANCE
+            Console.WriteLine("The number is: " + f(10, 20));           // The number is: 300
 
 
             Console.WriteLine("\nPress Enter Key to Continue...");
