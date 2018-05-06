@@ -1,2 +1,2 @@
-C# 
+# C#
 facilities & design patterns
