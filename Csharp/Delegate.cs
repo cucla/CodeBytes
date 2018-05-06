@@ -31,7 +31,7 @@ namespace Delegate
             d = baz;
             Console.WriteLine("Result: " + d(10, 2.5));           // Result: 7.5
 
-            d = delegate (double a, double b)   // ANONYMOUS DELEGATES
+            d = delegate (double a, double b)   // ANONYMOUS DELEGATE
             {
                 return (a * b).ToString();
             };
