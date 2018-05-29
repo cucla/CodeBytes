@@ -44,6 +44,7 @@ protected:
 	Dependency * m_thing;
 };
 
+// No 3. Save smart pointer to dependent class 
 class C {
 public:
 	C(std::shared_ptr<Dependency> d) : m_thing(d) {
