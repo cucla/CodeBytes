@@ -22,7 +22,7 @@ class A {
 public:
 	A(const Dependency & thing) : m_thing(thing) {}
 	// A(const Dependency &&) = delete;   // no binding to temporary objects (callables)
-										  // or make 'Dependency & m_thing' nonconst
+					      // or make 'Dependency & m_thing' non const
 
 	DISALLOW_COPY_AND_ASSIGN(A);  // reference cannot be copied
 	void printit() { std::cout << "From A class " << m_thing.num << std::endl; }
