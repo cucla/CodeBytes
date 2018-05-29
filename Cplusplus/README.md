@@ -1,2 +1,2 @@
 # C++ 
-Class_Demos   ->   C++ class design examples
+Class_Demos   ->   C++ class examples
