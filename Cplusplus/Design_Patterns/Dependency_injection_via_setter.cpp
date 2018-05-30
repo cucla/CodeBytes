@@ -29,7 +29,7 @@ public:
 	}
 
 private:
-	Shape * pShape;
+	Shape * pShape;  // probably not necessary here...
 };
 
 
