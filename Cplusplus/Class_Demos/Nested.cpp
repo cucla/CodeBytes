@@ -30,16 +30,18 @@ class Outer {
 	// can be accessed from Outer class & other Inner classes
 	public:
 		PrivateInner() : d_privateInner(55) { }
-		void privateInnerFunc() { std::cout << "HI!" << std::endl; }
+		void privateInnerFunc() { std::cout << "PrivateInner::privateInnerFunc()" << std::endl; }
 	};
 
 public:
 	class Inner01 {
-		class Inner02;	// forward declared Inner02 in Inner01
-						// if contains pointers, references, parameters or 
-						// return values to objects of the other nested classes
-		void mutateOuter(Outer & o);
+		friend class Inner02;  // to access Inner's private fields
+		//class Inner02;	// 'friend' is also forward declaration
+							// forward declared Inner02 in Inner01
+							// if contains pointers, references, parameters or 
+							// return values to objects of the other nested classes
 		Inner02 * ptr;
+		void mutateOuter(Outer & o);
 	};
 
 	class Inner02 {
@@ -73,12 +75,12 @@ public:
 		PrivateInner privateInnerObj; // Outer::Inner02 can access public fields Outer::PrivateInner
 	};
 
-	PrivateInner privateInnerObj;
+	PrivateInner privateInnerObj;  // Outer creates object of PrivateInner
 	void Outer::caller() {
 		privateInnerObj.privateInnerFunc();
 	}
 
-	static Inner02 getInner() { return Inner02(); }  // Outer class can use Inner as 'return' and 'args'
+	static Inner01 getInner() { return Inner01(); }  // Outer class can use Inner as 'return' and 'args'
 
 	int getInnerPrivate(Inner02 * p) {
 		return p->innerField; 
@@ -105,10 +107,12 @@ int main()
 	outer.caller();
 	outerPtr->caller();
 
-	Outer::Inner02 inner2 = outer.getInner();
+	Outer::Inner01 inner1 = outer.getInner();
+
 	auto a = outer.getInnerPrivate(innerPtr);
 	std::cout << "Inner's member: " << a << std::endl;
 
 
 	std::cin.get();
 }
+
