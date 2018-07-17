@@ -36,7 +36,6 @@
         {
             var res = string.Empty;
             var reslen = 0;
-
             var swithpounds = preprocess(s);
             var maxR = 0;
             var maxC = 0;
@@ -63,7 +62,6 @@
                     res = s.Substring((i - dp[i]) / 2, reslen);
                 }
             }
-
             return res;
         }
 
@@ -75,9 +73,7 @@
                 stringbuilder.Append("#");
                 stringbuilder.Append(ch);
             }
-
             stringbuilder.Append("#");
-
             return stringbuilder.ToString();
         }
     }
