@@ -1,4 +1,4 @@
-// PROBLEMS: 5, 
+// https://miafish.wordpress.com/category/algorithm/string-algorithm/ 
 
 // 5. Longest Palindromic Substring
 // Dynamic programming, O(N^2) time and space complexity
