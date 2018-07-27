@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
+// DOCS: https://msdn.microsoft.com/en-us/library/ms379572(v=vs.80).aspx
+
 namespace LyndaExamples
 {
     public class Demo
