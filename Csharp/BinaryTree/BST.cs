@@ -321,3 +321,52 @@ namespace BST
         }
     }
 }
+
+
+
+
+
+        static void Main(string[] args)
+        {
+            int[] intArray = { 27, 13, 6, 42, 48, 33, 50};
+            var bst1 = new BinarySearchTree<int>();
+
+            foreach(var val in intArray)
+                bst1.InsertNode(val);
+
+            BTreePrinter.Print(bst1.Root);
+            Console.WriteLine();
+            Console.WriteLine($"Number of elements is: {bst1.Count}\n");
+            Console.Write("PreorderTraversal -> ");
+            bst1.PreorderTraversal();
+            Console.WriteLine();
+            Console.Write("InorderTraversal -> ");
+            bst1.InorderTraversal();
+            Console.WriteLine();
+            Console.Write("PostorderTraversal -> ");
+            bst1.PostorderTraversal();
+            Console.WriteLine("\n");
+            var smallestNode = bst1.FindSmallestBST();
+            Console.WriteLine($"Smallest node is: {smallestNode.Data.ToString()}");
+            var largestNode = bst1.FindLargestBST();
+            Console.WriteLine($"Largest node is: {largestNode.Data.ToString()}");
+            var someNode = bst1.FindNodeBST(33);
+            if (someNode != null)
+                Console.WriteLine($"We found node: {someNode.Data.ToString()}");
+
+
+
+            var found = bst1.DeleteNode(bst1.Root, 41);
+            if (found)
+            {
+                BTreePrinter.Print(bst1.Root);
+                Console.WriteLine();
+                Console.WriteLine($"Number of elements is: {bst1.Count}\n");
+            }
+            Console.WriteLine();
+            bst1.InorderTraversal();
+
+
+
+            Console.Read();
+        }
